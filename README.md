@@ -32,7 +32,7 @@ Open **Output > ESLint Watchdog** to see a timestamped log of all health checks,
 
 ## Settings
 
-All settings are under `eslintWatchdog.*` in your editor settings. You can edit them directly in the Settings UI (search "ESLint Watchdog").
+You can change all options in the **Settings UI** — no JSON required. Use **Cmd+Shift+P** → **ESLint Watchdog: Open Settings** to jump straight to the extension’s settings, or open Settings and search for **ESLint Watchdog**. Each option has a text field or checkbox right there (e.g. proactive restart minutes, default 15).
 
 | Setting | Type | Default | Description |
 |---------|------|---------|-------------|
@@ -49,6 +49,7 @@ Open the Command Palette (`Cmd+Shift+P`) and search for:
 
 - **ESLint Watchdog: Restart ESLint Server** — Immediately restart the ESLint language server
 - **ESLint Watchdog: Reset Restart Counter** — Reset the session restart counter (useful if you hit the max restart limit)
+- **ESLint Watchdog: Open Settings** — Open Settings filtered to this extension so you can edit refresh interval, thresholds, etc. without touching JSON
 
 ## Tips
 

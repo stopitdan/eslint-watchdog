@@ -51,6 +51,15 @@ function activate(context) {
     })
   );
 
+  context.subscriptions.push(
+    vscode.commands.registerCommand("eslintWatchdog.openSettings", () => {
+      vscode.commands.executeCommand(
+        "workbench.action.openSettings",
+        "eslintWatchdog"
+      );
+    })
+  );
+
   // --- Track user activity (typing) to avoid restarting mid-edit ---
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument(() => {
