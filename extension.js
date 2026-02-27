@@ -260,6 +260,10 @@ async function restartEslint(output, reason) {
     lastEslintDiagTime = Date.now();
 
     log(output, `ESLint restarted successfully (total: ${restartCount})`);
+    log(
+      output,
+      "In ESLint's output, 'Server process exited successfully' is the old process shutting down; the new server is the one that's running."
+    );
 
     // Wait a bit then update status based on whether ESLint came back
     setTimeout(() => {
