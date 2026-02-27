@@ -1,0 +1,67 @@
+{
+  "name": "eslint-watchdog",
+  "displayName": "ESLint Watchdog",
+  "description": "Automatically restarts the ESLint language server when it crashes (e.g., OOM) and proactively restarts it on a timer to prevent crashes.",
+  "version": "0.3.0",
+  "icon": "icon.png",
+  "publisher": "stopitdan",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Linters", "Other"],
+  "keywords": ["eslint", "watchdog", "restart", "oom", "crash"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "eslintWatchdog.restart",
+        "title": "ESLint Watchdog: Restart ESLint Server"
+      },
+      {
+        "command": "eslintWatchdog.resetCounter",
+        "title": "ESLint Watchdog: Reset Restart Counter"
+      }
+    ],
+    "configuration": {
+      "title": "ESLint Watchdog",
+      "properties": {
+        "eslintWatchdog.autoRestart": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Automatically restart ESLint when a crash is detected.\n\nWhen **enabled**, the watchdog silently restarts ESLint and shows a toast notification.\n\nWhen **disabled**, a notification appears with a **Restart ESLint** button so you can decide."
+        },
+        "eslintWatchdog.proactiveRestartMinutes": {
+          "type": "number",
+          "default": 15,
+          "minimum": 0,
+          "markdownDescription": "Proactively restart ESLint every **N minutes** during idle periods to prevent memory from building up and causing an OOM crash.\n\nRestarts only happen when you haven't typed for `#eslintWatchdog.idleSeconds#` seconds.\n\nSet to `0` to disable proactive restarts entirely."
+        },
+        "eslintWatchdog.staleThresholdMinutes": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "markdownDescription": "How many **minutes** of zero ESLint diagnostics (while JS/TS files are open) before the watchdog considers ESLint crashed.\n\nIncrease this if you get false crash detections on projects with few or no lint errors."
+        },
+        "eslintWatchdog.cooldownMinutes": {
+          "type": "number",
+          "default": 2,
+          "minimum": 1,
+          "markdownDescription": "Minimum **minutes** between automatic restarts.\n\nPrevents restart loops if ESLint keeps crashing immediately after restarting."
+        },
+        "eslintWatchdog.idleSeconds": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "markdownDescription": "How many **seconds** of no typing before a proactive restart is allowed.\n\nEnsures you're never interrupted mid-keystroke by a scheduled restart."
+        },
+        "eslintWatchdog.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show toast notifications when ESLint is automatically restarted.\n\nDisable for completely silent operation — you can still check the **Output > ESLint Watchdog** log."
+        }
+      }
+    }
+  }
+}
