@@ -14,3 +14,27 @@
 - Status bar item showing ESLint health (click to restart)
 - Configurable settings: restart interval, stale threshold, cooldown, idle detection
 - Output channel logging for all restarts and detections
+
+## 0.2.0
+
+- Icon updates
+
+## 0.3.0
+
+- UI for updating/customizing the settings
+
+## 0.4.0
+
+- Ugh more icon fixes
+
+## 0.5.0
+
+- Status bar button for manual restart
+
+## 0.6.0
+
+- Better logging in the output
+
+## 0.6.1
+
+- You guessed it, icon changes
