@@ -251,6 +251,12 @@ async function restartEslint(output, reason) {
   log(output, `Restarting ESLint server (reason: ${reason})`);
 
   try {
+    // Save current focus so we can restore it after ESLint reveals its output
+    const activeEditor = vscode.window.activeTextEditor;
+    const activeTerminal = vscode.window.activeTerminal;
+    const wasTerminalFocused =
+      !activeEditor || vscode.window.state.focused === false;
+
     await vscode.commands.executeCommand("eslint.restart");
     lastRestartTime = Date.now();
     restartCount++;
@@ -264,6 +270,18 @@ async function restartEslint(output, reason) {
       output,
       "In ESLint's output, 'Server process exited successfully' is the old process shutting down; the new server is the one that's running."
     );
+
+    // Restore focus — ESLint extension tends to reveal its output channel
+    setTimeout(() => {
+      if (activeTerminal) {
+        activeTerminal.show(true);
+      } else if (activeEditor) {
+        vscode.window.showTextDocument(activeEditor.document, {
+          viewColumn: activeEditor.viewColumn,
+          preserveFocus: false,
+        });
+      }
+    }, 300);
 
     // Wait a bit then update status based on whether ESLint came back
     setTimeout(() => {

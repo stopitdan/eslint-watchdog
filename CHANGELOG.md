@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0
+
+- Restore focus after ESLint restart — the ESLint output channel no longer steals focus from your terminal or editor
+
 ## 0.6.1
 
 - Output channel now clarifies that ESLint’s “Server process exited successfully” message refers to the previous process shutting down after a restart, not the new server exiting
