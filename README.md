@@ -56,3 +56,7 @@ Open the Command Palette (`Cmd+Shift+P`) and search for:
 - If ESLint is crashing every few minutes, try increasing `proactiveRestartMinutes` to something lower than your typical crash interval (e.g., if it crashes after ~20 min, set this to 12-15).
 - If you get false crash detections (e.g., on a project with zero lint errors), increase `staleThresholdMinutes`.
 - The watchdog caps automatic crash-restarts at 30 per session to prevent infinite loops. Use the **Reset Restart Counter** command if you hit this limit.
+
+## Support
+
+If you find this extension helpful and would like to support its development, you can [buy me a coffee](https://buymeacoffee.com/stopitdan). Thanks for using ESLint Watchdog!

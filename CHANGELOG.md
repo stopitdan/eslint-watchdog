@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+- First stable release
+
 ## 0.7.0
 
 - Restore focus after ESLint restart — the ESLint output channel no longer steals focus from your terminal or editor
